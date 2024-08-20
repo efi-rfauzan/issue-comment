@@ -5,10 +5,11 @@ on:
   issue_comment:
 
 jobs:
-  build:
+  comment:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
-
+    permissions:
+      issues: write
     steps:
       - uses: actions/github-script@v6
         if: contains(github.event.comment.body, '/preparation')
