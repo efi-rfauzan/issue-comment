@@ -11,6 +11,8 @@ jobs:
     permissions:
       issues: write
     steps:
+      - name: My first step - check out repository
+        uses: actions/checkout@v4
       - uses: ./.github/actions/comment-issue
         if: contains(github.event.comment.body, '/preparation')
         with:
