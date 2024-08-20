@@ -21,7 +21,7 @@ jobs:
             
             This checklist is for the preparation phase, skip it when not relevant.
 
-            - [ ] if project contains CI pipeline, add `Pipeline` label
+            - [ ] if project contains CI pipeline, add \`Pipeline\` label
             - [ ] clean up repositories
             - [ ] pass file size limit check
             - [ ] convert binaries to LFS. (If applicable)
