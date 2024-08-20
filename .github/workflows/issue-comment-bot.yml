@@ -11,22 +11,20 @@ jobs:
     permissions:
       issues: write
     steps:
-      - name: My first step - check out repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4 # needed to access local action
       - uses: ./.github/actions/comment-issue
         if: contains(github.event.comment.body, '/preparation')
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          comment: "Hello world"
-          
-      # - uses: actions/github-script@v6
-      #   if: contains(github.event.comment.body, '/preparation')
-      #   with:
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
-      #     script: |
-      #       github.rest.issues.createComment({
-      #         issue_number: context.issue.number,
-      #         owner: context.repo.owner,
-      #         repo: context.repo.repo,
-      #         body: "Hi, I'm preparing"
-      #       })
+          comment: |
+            ### Preparation checklist
+            
+            This checklist is for the preparation phase, skip it when not relevant.
+
+            - [ ] if project contains CI pipeline, add `Pipeline` label
+            - [ ] clean up repositories
+            - [ ] pass file size limit check
+            - [ ] convert binaries to LFS. (If applicable)
+            - [ ] translate pipeline to GitHub Actions. (If applicable)
+            - [ ] create users on AD
+            - [ ] create team / AD group
